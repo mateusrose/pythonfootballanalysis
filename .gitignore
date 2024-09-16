@@ -1,0 +1,9 @@
+.git/
+models/
+modelsold/
+output_videos/
+runs/
+training/
+videos/
+*.pt
+
