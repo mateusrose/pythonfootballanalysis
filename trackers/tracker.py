@@ -5,6 +5,7 @@ import os
 import sys
 import cv2
 import numpy as np
+import pandas as pd
 sys.path.append("../")
 from utils import get_bbox_center, get_bbox_width
 
@@ -13,6 +14,16 @@ class Tracker:
         self.model = YOLO(model_path)
         self.tracker = sv.ByteTrack()
 
+    def interpolate_ball_position(self,ball_positions):
+        ball_positions = [x.get(1,{}).get("bbox",[]) for x in ball_positions]
+        df_ball_positions = pd.DataFrame(ball_positions, columns=["x1","y1","x2","y2"])
+        #interpolate missing positions
+        df_ball_positions = df_ball_positions.interpolate()
+        df_ball_positions = df_ball_positions.bfill()
+
+        ball_positions = [{1: {"bbox":x}} for x in df_ball_positions.to_numpy().tolist()]
+        return ball_positions
+
     def detect_frames(self, frames):
         batch_size = 20
         detections = []
@@ -20,7 +31,7 @@ class Tracker:
             detections_batch = self.model.predict(frames[i:i+batch_size], conf=0.3)
             detections += detections_batch
         return detections
-
+    
     def get_object_tracks(self, frames, read_from_stub = False, stub_path = None):
         if read_from_stub and stub_path is not None and os.path.exists(stub_path):
             with open(stub_path,"rb") as f:
@@ -133,9 +144,6 @@ class Tracker:
         cv2.drawContours(frame, [triangle_points], 0, (0,0,0), 2)
         return frame
         
-
-
-
     def draw_annotations(self, video_frames, tracks):
         output_video_frames = []
         for frames_num, frame in enumerate(video_frames):

@@ -10,8 +10,10 @@ def main():
     tracks = tracker.get_object_tracks(video_frames,
                                        read_from_stub=True,
                                        stub_path="stubs/track_stubs.pkl")
-    #assign teams
+    #interpolate ball positions
+    tracks["ball"] = tracker.interpolate_ball_position(tracks["ball"])
 
+    #assign teams
     team_assigment = TeamAssigment()
     team_assigment.assign_team_color(video_frames[0],
                                      tracks["players"][0])
@@ -25,14 +27,16 @@ def main():
             tracks["players"][frame_num][player_id]["team_color"] = team_assigment.team_colors[team]
 ## black player being recognized as white color
 
-
+   # i = 0
     #save cropped player
-    # for track_id, player in tracks["players"][0].items():
-    #    bbox = player["bbox"]
-    #    frame = video_frames[0]
-    #    cropped_image = frame[int(bbox[1]):int(bbox[3]), int(bbox[0]):int(bbox[2])]
-    #    cv2.imwrite("output_videos/cropped_img.jpg", cropped_image)
-    #    break
+   # for track_id, player in tracks["players"][0].items():
+   #     bbox = player["bbox"]
+   #     frame = video_frames[0]
+   #     cropped_image = frame[int(bbox[1]):int(bbox[3]), int(bbox[0]):int(bbox[2])]
+   #     cv2.imwrite(f"output_videos/cropped_img{i}.jpg", cropped_image)
+   #     i += 1
+   #     if i > 24:
+   #         break
 
     #Draw output 
     output_video_frames = tracker.draw_annotations(video_frames, tracks)
