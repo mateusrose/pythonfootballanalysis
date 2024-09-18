@@ -6,7 +6,8 @@
     "trackers",
     "training",
     "utils",
-    "videos"
+    "videos",
+    "teams_assigment"
   ],
   "exclude": [
     "**/__pycache__",
