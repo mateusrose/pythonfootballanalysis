@@ -8,10 +8,15 @@ def read_video(video_path):
         if not ret:
             break
         frames.append(frame)
+        #to implement new res videos
+        #resized_frame = cv2.resize(frame, (640,360))
+        #frames.append(resized_frame)
+    cap.release()
     return frames
 
 def save_video(output_video_frames, output_video_path):
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    #fourcc = cv2.VideoWriter_fourcc(*"mpv4")
     out = cv2.VideoWriter(output_video_path, fourcc, 24, (output_video_frames[0].shape[1], output_video_frames[0].shape[0]))
     for frame in output_video_frames:
         out.write(frame)

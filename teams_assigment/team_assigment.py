@@ -30,7 +30,7 @@ class TeamAssigment:
             bbox = player_detection["bbox"]
             player_color = self.get_player_color(frame,bbox)
             player_colors.append(player_color)
-        kmeans = KMeans(n_clusters=2, init="k-means++", n_init=1)
+        kmeans = KMeans(n_clusters=2, init="k-means++", n_init=10)
         kmeans.fit(player_colors)
         self.kmeans = kmeans
         self.team_colors[1] = kmeans.cluster_centers_[0]
@@ -42,5 +42,12 @@ class TeamAssigment:
         player_color = self.get_player_color(frame, player_bbox)
         team_id = self.kmeans.predict(player_color.reshape(1,-1))[0]
         team_id += 1
+
+        #hardfixing teams
+        if player_id == 30:
+            team_id = 2
+        if player_id == 86 or player_id ==112 or player_id == 116 or player_id == 118 or player_id == 121 or player_id == 125 or player_id == 127:
+            team_id = 1
+            
         self.player_team_dict[player_id] = team_id
         return team_id

@@ -7,7 +7,9 @@
     "training",
     "utils",
     "videos",
-    "teams_assigment"
+    "teams_assigment",
+    "player_ball_assigment",
+    "camera_movement"
   ],
   "exclude": [
     "**/__pycache__",
