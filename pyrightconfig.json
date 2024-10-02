@@ -9,7 +9,9 @@
     "videos",
     "teams_assigment",
     "player_ball_assigment",
-    "camera_movement"
+    "camera_movement",
+    "view_transformer",
+    "speed_and_distance_estimator"
   ],
   "exclude": [
     "**/__pycache__",
