@@ -4,9 +4,13 @@ This project implements a tracking and analysis system for sports videos, extrac
 Features
 
     Player and Ball Tracking: Detects and tracks players and the ball in each frame of the video.
+    
     Speed & Distance Calculation: Computes player speeds (in km/h) and total distance covered (in meters) over time.
+    
     Camera Movement Estimation: Adjusts the positions of players to compensate for camera movement, ensuring accurate tracking data.
+    
     Team Identification: Uses jersey colors to assign players to teams, with corrections for specific known player IDs.
+    
     Ball Possession: Automatically assigns ball possession to the closest player and tracks team control of the ball throughout the game.
 
 ## Tools & Libraries Used
