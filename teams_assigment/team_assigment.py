@@ -39,17 +39,15 @@ class TeamAssigment:
     def get_player_team(self, frame, player_bbox, player_id):
         if player_id in self.player_team_dict:
             return self.player_team_dict[player_id]
-        player_color = self.get_player_color(frame, player_bbox)
-        team_id = self.kmeans.predict(player_color.reshape(1,-1))[0]
-        team_id += 1
-
-        #hardfixing teams
         if player_id == 11:
             team_id = 2
-        #if player_id == 86 or player_id ==112 or player_id == 116 or player_id == 118 or player_id == 121 or player_id == 125 or player_id == 127:
-        #    team_id = 1
-        if player_id == 57 or player_id==60:
-            team_id = 1
+        elif player_id == 57 or player_id == 60:
+            team_id = 1 
+        else:
+            player_color = self.get_player_color(frame, player_bbox)
+            team_id = self.kmeans.predict(player_color.reshape(1,-1))[0]+1
+
+        #hardfixing teams
             
         self.player_team_dict[player_id] = team_id
         return team_id
