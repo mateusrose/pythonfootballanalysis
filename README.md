@@ -16,9 +16,13 @@ Features
 ## Tools & Libraries Used
 
     YOLOv5: Used for detecting players and the ball in each frame of the video.
+    
     OpenCV (cv2): Utilized for image processing tasks, including feature tracking for camera movement estimation and drawing player statistics on frames.
+    
     Pandas: Used for handling structured data related to player positions and statistics.
+    
     NumPy: For efficient numerical calculations, especially in transforming coordinates and calculating distances.
+    
     Scikit-learn: Utilized for KMeans clustering to identify team affiliations based on jersey colors.
 
 ## How It Works
