@@ -8,10 +8,10 @@ class ViewTransformer():
 
         self.pixel_vertices = np.array(
             [
-                [110,1035],
-                [265,275],
-                [910,260],
-                [1640,915]
+                [60,603],
+                [1140,276],
+                [1920,369],
+                [1443,1116]
             ]
         )
         self.target_vertices = np.array(

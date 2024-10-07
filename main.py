@@ -10,7 +10,7 @@ from view_transformer import ViewTransformer
 from speed_and_distance_estimator import SpeedAndDistanceEstimator
 
 def main():
-    video_name = "00_trimmed"
+    video_name = "02_trimmed"
     video_frames = read_video(f"videos/analysis_videos/{video_name}.mp4")
 
     tracker = Tracker("models/best.pt")
@@ -63,7 +63,8 @@ def main():
             tracks["players"][frame_num][assigned_player]["has_ball"] = True
             team_ball_control.append(tracks["players"][frame_num][assigned_player]["team"])
         else:
-            team_ball_control.append(team_ball_control[-1])
+            pass
+        #team_ball_control.append(team_ball_control[0])
     team_ball_control = np.array(team_ball_control)
 
 
