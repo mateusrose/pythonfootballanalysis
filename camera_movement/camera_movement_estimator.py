@@ -59,7 +59,7 @@ class CameraMovementEstimator():
                     max_distance = distance
                     camera_movement_x, camera_movement_y = measure_xy_distance(prev_features_point, new_features_point)
             if max_distance > self.minimum_distance:
-                camera_movement[frame_num] = [camera_movement_x, camera_movement_x]
+                camera_movement[frame_num] = [camera_movement_x, camera_movement_y]
                 prev_features = cv2.goodFeaturesToTrack(frame_gray, **self.features)
             prev_gray = frame_gray.copy()
 
@@ -80,7 +80,7 @@ class CameraMovementEstimator():
             
             x_movement, y_movement = camera_movement_per_frame[frame_num]
             frame = cv2.putText(frame,f"Camera movement X: {x_movement:.2f}", (10,30), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,0,0), 2)
-            frame = cv2.putText(frame,f"Camera movement Y: {x_movement:.2f}", (10,60), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,0,0), 2)
+            frame = cv2.putText(frame,f"Camera movement Y: {y_movement:.2f}", (10,60), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,0,0), 2)
             output_frames.append(frame)
         return output_frames
             
