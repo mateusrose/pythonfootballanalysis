@@ -4,7 +4,7 @@ import cv2
 class ViewTransformer():
     def __init__(self):
         court_width = 68
-        court_segment = 23.32
+        court_segment = 46.67
 
         self.pixel_vertices = np.array(
             [
