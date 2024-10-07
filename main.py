@@ -10,7 +10,7 @@ from view_transformer import ViewTransformer
 from speed_and_distance_estimator import SpeedAndDistanceEstimator
 
 def main():
-    video_name = "02_trimmed"
+    video_name = "03_trimmed"
     video_frames = read_video(f"videos/analysis_videos/{video_name}.mp4")
 
     tracker = Tracker("models/best.pt")
