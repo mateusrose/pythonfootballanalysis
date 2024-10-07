@@ -28,12 +28,16 @@ Features
 ## How It Works
 
     Tracking: YOLOv5 is applied to detect players and the ball in each frame. The detected positions are tracked over time.
+    
     Perspective Transformation: The players' positions in the video frame are transformed into real-world coordinates using OpenCV, allowing accurate measurement of speed and distance.
+    
     Camera Movement Compensation: A camera movement estimation algorithm adjusts player positions to account for any panning or zooming of the camera.
+    
     Team Assignment: Player jersey colors are analyzed and clustered to determine which team each player belongs to.
+    
     Ball Possession: The system determines which player has the ball at any given moment based on proximity and tracks team control of the ball.
 
-## Analysis Videos
+## Analysis Output Videos
 
 Here are some example videos where this system was applied for analysis:
 
@@ -43,7 +47,11 @@ Here are some example videos where this system was applied for analysis:
 ## Future Improvements
 
     Dynamic Field of View: Adjust the perspective transformation dynamically to handle changing camera angles.
+    
     Enhanced Team Detection: Improve the team assignment logic to handle edge cases more reliably.
+    
     More Robust Ball Possession: Refine the ball possession algorithm to handle edge cases where the nearest player isn't always the one controlling the ball.
+    
     Player Tracking at All Times: Implement continuous player tracking to avoid misidentifying players when they disappear or reappear in the frame.
+    
     Better AI Training with More Data: Train the object detection models with larger and more diverse datasets for more accurate and consistent analysis.
