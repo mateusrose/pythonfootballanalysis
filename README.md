@@ -41,8 +41,8 @@ Features
 
 Here are some example videos where this system was applied for analysis:
 
-    Video Analysis 1 – Link to the first video
-    Video Analysis 2 – Link to the second video
+    Video Analysis 1 – (https://www.youtube.com/watch?v=w26qlHa2F-w)
+    Video Analysis 2 – More soon
 
 ## Future Improvements
 
